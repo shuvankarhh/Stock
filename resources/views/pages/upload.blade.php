@@ -43,12 +43,6 @@
                         </div>
                     </form>
 
-                    <div x-data="{}">
-                        <button class="btn btn-primary mb-2" x-on:click="chartOfAccountsUpdate">Update Accounts from ERP</button>
-                        <br/>
-                        <button class="btn btn-primary" @click="trackingCategoriesUpdate">Update Tracking Catgories from ERP</button>
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -70,34 +64,6 @@
                 });
             }
         }
-    }
-
-    function chartOfAccountsUpdate(e) {
-        this.$dispatch('loading', true);
-        fetch("{{ route('coa') }}", {
-            method: 'GET',
-            headers: {
-                'X-CSRF-TOKEN': document.head.querySelector('meta[name=csrf-token]').content
-            }
-        })
-        .then(response => response.text())
-        .then(text => {
-            this.$dispatch('loading', false);
-        })
-    }
-
-    function trackingCategoriesUpdate(e) {
-        this.$dispatch('loading', true);
-        fetch("{{ route('trackingCategories') }}", {
-            method: 'GET',
-            headers: {
-                'X-CSRF-TOKEN': document.head.querySelector('meta[name=csrf-token]').content
-            }
-        })
-        .then(response => response.text())
-        .then(text => {
-            this.$dispatch('loading', false);
-        })
     }
 
 </script>

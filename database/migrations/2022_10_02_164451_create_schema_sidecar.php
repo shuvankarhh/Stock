@@ -182,56 +182,6 @@ class CreateSchemaSidecar extends Migration
             ENGINE=InnoDB
         ;");
 
-
-        DB::statement("CREATE TABLE `chart_of_accounts` (
-            `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-            `project_api_system_id` INT(11) NOT NULL,
-            `account_id` VARCHAR(64) NULL DEFAULT NULL,
-            `code` VARCHAR(24) NULL DEFAULT NULL,
-            `name` VARCHAR(64) NULL DEFAULT NULL,
-            `type` VARCHAR(24) NULL DEFAULT NULL,
-            `tax_type` VARCHAR(24) NULL DEFAULT NULL,
-            `currency_code` VARCHAR(4) NULL DEFAULT NULL,
-            `status` VARCHAR(10) NULL DEFAULT NULL,
-            `created_at` TIMESTAMP NULL DEFAULT NULL,
-            `updated_at` TIMESTAMP NULL DEFAULT NULL,
-            PRIMARY KEY (`id`) USING BTREE
-        )
-        COLLATE='utf8_general_ci'
-        ENGINE=InnoDB
-        ;");
-
-
-        DB::statement("CREATE TABLE `tracking_categories` (
-            `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-            `project_api_system_id` INT(11) NOT NULL,
-            `tracking_category_id` VARCHAR(64) NULL DEFAULT NULL,
-            `name` VARCHAR(64) NULL DEFAULT NULL,
-            `status` VARCHAR(10) NULL DEFAULT NULL,
-            `created_at` TIMESTAMP NULL DEFAULT NULL,
-            `updated_at` TIMESTAMP NULL DEFAULT NULL,
-            PRIMARY KEY (`id`) USING BTREE
-        )
-        COLLATE='utf8_general_ci'
-        ENGINE=InnoDB
-        ;");
-
-        DB::statement("CREATE TABLE `tracking_options` (
-            `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-            `tracking_category_id` INT(11) NOT NULL,
-            `tracking_option_id` VARCHAR(64) NULL DEFAULT NULL,
-            `name` VARCHAR(64) NULL DEFAULT NULL,
-            `status` VARCHAR(10) NULL DEFAULT NULL,
-            `created_at` TIMESTAMP NULL DEFAULT NULL,
-            `updated_at` TIMESTAMP NULL DEFAULT NULL,
-            PRIMARY KEY (`id`) USING BTREE
-        )
-        COLLATE='utf8_general_ci'
-        ENGINE=InnoDB
-        ;");
-
-
-
         DB::statement("SET FOREIGN_KEY_CHECKS=1;");
 
     }
@@ -254,8 +204,5 @@ class CreateSchemaSidecar extends Migration
         Schema::dropIfExists('users_client_list');
         Schema::dropIfExists('users_project_list');
         Schema::dropIfExists('api_access_tokens');
-        Schema::dropIfExists('chart_of_accounts');
-        Schema::dropIfExists('tracking_categories');
-        Schema::dropIfExists('tracking_options');
     }
 }
