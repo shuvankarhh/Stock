@@ -1,3 +1,12 @@
+Update after deploy:
+
+1) Add .env to root
+2) Modify .env for current app install
+3) Add "vendor" dir to root (zip is in c:... ...\ASA AP Platform\00 Software Projects\Base Applet folder)
+4) Change landing_background.jpg
+5) Update favicon.ico
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
