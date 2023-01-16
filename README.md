@@ -2,7 +2,7 @@ Update after deploy:
 
 1) Add .env to root
 2) Modify .env for current app install
-3) Add "vendor" dir to root (zip is in C:...\...Platform\...Projects\Base Applet folder)
+3) Add "vendor" dir to root (zip is in C:...\ ...Platform\ ...Projects\Base Applet folder)
 4) Change landing_background.jpg
 5) Update favicon.ico
 
