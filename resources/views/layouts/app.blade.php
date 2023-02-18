@@ -18,6 +18,9 @@
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+        <link href="{{ env('cssOverWrite', '') }}" rel="stylesheet">
+
     </head>
 <body >
 
@@ -39,11 +42,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     @auth
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('reset') }}">| Reset |</a>
-                        </li>
-                    </ul>
+                    <x-menuLeft></x-menuLeft>
                     @endauth
 
                     <!-- Right Side Of Navbar -->
@@ -60,6 +59,7 @@
 
                         @else
                            
+                            <x-menuRight></x-menuRight>
                             <x-setupDetails></x-setupDetails>
                             
                             <li class="nav-item dropdown">
