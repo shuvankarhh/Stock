@@ -1,4 +1,4 @@
-Update after deploy:
+When setting up deploy:
 
 Before deploying to server:
 1) set .cpanel.yml to replace destination direcetory in the file.  Path is where you want cpanel Git Version Control to write the fiels when the connections is made and when the subsequent deployments are made.
