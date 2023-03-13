@@ -1,5 +1,10 @@
 Update after deploy:
 
+Before deploying to server:
+1) set .cpanel.yml to replace destination direcetory in the file.  Path is where you want cpanel Git Version Control to write the fiels when the connections is made and when the subsequent deployments are made.
+2) This is ehat needs to be chnaged: "- export DEPLOYPATH=/home/aq3lrhscsvdi/public_html/fullforcefinancial.com/fringe" "aq3lrhscsvdi" is from the main cpanel page's current user.
+
+After deploying to server:
 1) Add .env to root
 2) Modify .env for current app install
 3) Add "vendor" dir to root (zip is in C:...\ ...Platform\ ...Projects\Base Applet folder)
