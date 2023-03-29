@@ -9,16 +9,15 @@ class CheckController extends Controller
 {
     public function index()
     {
-        dd($_GET);
-        //dd(base_path('index'));
-
         return view('check.index');
     }
 
     public function store()
     {
-        define("UPLOAD_PATH", storage_path('uploads'));
+        define("UPLOAD_PATH", storage_path('uploads/'));
 
+        set_include_path(base_path('src/'));
+        
         $this->deleteOlderFiles(UPLOAD_PATH);
         if (!file_exists(UPLOAD_PATH)) {
             mkdir(UPLOAD_PATH, 0777);
@@ -67,7 +66,7 @@ class CheckController extends Controller
             }
             $ccc = 0;
             $pageWidth = 216;
-            $pdf = new PDF_Ellipse('P', 'mm', array(
+            $pdf = new \PDF_Ellipse('P', 'mm', array(
                 $pageWidth,
                 297,
             ));
@@ -205,7 +204,7 @@ class CheckController extends Controller
                 $pdf->Output('F', $pdfoutfile);
                 $json['outputPDF'] = $pdfoutfile;
                 if ($json['totalChecks'] > 0) {
-                    $im = new Imagick();
+                    $im = new \Imagick();
                     $im->setResolution(150, 150);
                     $im->readImage($pdfoutfile . '[0]');
                     //$im->setOption('crop','1276x575+0+0');
@@ -219,7 +218,7 @@ class CheckController extends Controller
                     );
                 }
                 if ($json['totalChecks'] > 1) {
-                    $im = new Imagick();
+                    $im = new \Imagick();
                     $im->setResolution(150, 150);
                     $im->readImage($pdfoutfile . '[' . ($json['totalChecks'] - 1) . ']');
                     //$im->setOption('crop','1276x575+0+0');
@@ -324,11 +323,10 @@ class CheckController extends Controller
     protected function str_getcsv0($aline)
     {
         $string = trim($aline);
-        $string = preg_replace_callback('|"[^"]+"|', create_function(
-        // single quotes are essential here,
-
-        // or alternative escape all $ as \$
-            '$matches', 'return str_replace(\',\',\'*comma*\',$matches[0]);'), $string);
+        $string = preg_replace_callback('|"[^"]+"|', function($matches) {
+            return str_replace(',','*comma*',$matches[0]);
+        }, $string);
+        
         $array = explode(',', $string);
         $array = str_replace('*comma*', ',', $array);
         $array = str_replace('"', '', $array);
