@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CheckController;
 use App\Http\Controllers\Admin\StepOneController;
 use App\Http\Controllers\Admin\StepTwoController;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +42,8 @@ Route::middleware(['auth'])->group(function(){
 
     Route::get('/step-two', [StepTwoController::class, 'create'])->name('step-two.create');
     Route::post('/step-two', [StepTwoController::class, 'store'])->name('step-two.store');
+
+    Route::post('/check', [CheckController::class, 'index'])->name('check.index');
 
     Route::get('/users', [UserController::class, 'index'])->name('users');
     Route::get('/user/create', [UserController::class, 'create'])->name('userCreate');
