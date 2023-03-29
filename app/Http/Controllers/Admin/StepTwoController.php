@@ -44,7 +44,7 @@ class StepTwoController extends Controller
 
         $request->session()->put('project_id', $request->get('project_id'));
 
-        // Goes to the setup route.
-        return redirect()->route('setup.index');
+        // Goes to the check route.
+        return redirect()->route('check.index');
     }
 }

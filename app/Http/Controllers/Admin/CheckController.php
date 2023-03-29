@@ -8,6 +8,14 @@ class CheckController extends Controller
 {
     public function index()
     {
-        dd('INSIDE CHECK..');
+        //dd(base_path('index'));
+        
+        return view('check.index');
     }
+
+    public function store()
+    {
+        
+    }
+
 }

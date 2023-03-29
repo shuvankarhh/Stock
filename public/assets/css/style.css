@@ -1,0 +1,93 @@
+#msg1 {
+    text-align: center;
+    float: right;
+    font-size: 15px;
+    color: red;
+    font-weight: 600;
+} 
+.btn_style  {
+    width: 100%;
+    height: 158px;
+/*    background-image: ;*/
+    background-image: url('../img/bgbtn.jpg');
+    border: 0px;
+    font-size: 16px;
+  /*  color: #fff;*/
+	font-weight: 600;
+}
+
+/* Model Popup  */
+
+.btn_div {
+position: relative;
+margin: 0 auto;
+}
+
+.mybtn {
+             height: 250px; width:400px; top: 170px; left: 450px;
+             border: 2px solid black;
+             border-radius: 20px;
+             background:#00ace6;
+             position: absolute;
+             z-index:9999; text-align: center;
+             font-size: 18px; 
+             color: black;display: none;
+       }
+
+
+.ui-draggable-handle    {
+    color: #fff !important;
+    font-weight: bold;
+    background: #000 !important;
+    }
+.ui-resizable    {
+/*    height: 320px !important;*/
+    width: 400px !important;
+    top: 150px !important;
+    left: 440px !important;    
+    }
+
+
+.build {  
+    background: #558AA4;
+    padding: 10px;
+    border: 1px solid #b3b3b3;
+    margin-bottom: 0px;
+}
+.selct_btn {  
+    background: #558AA4 !important;
+    color: #000 !important;
+    font-size: 18px;
+    border-color:  #b3b3b3 !important;
+    padding: 2px 31px;
+}
+.review_btn {  
+    background: #558AA4 !important;
+    color: #000 !important;
+    font-size: 18px;
+    border-color:  #b3b3b3 !important;
+    padding: 2px 26px;
+}
+.finish_btn {  
+    background: #C81E1C !important;
+    color: #fff !important;
+    font-size: 18px;
+    border-color:  #b3b3b3 !important;
+    padding: 2px 26px;
+}
+.start_check_num {
+    float: left;
+    text-align: left;
+    margin: 0px;
+    
+}
+.check_num_field {
+    border-color:  #b3b3b3;
+    border: 2px solid #b3b3b3;
+}
+.check_num_check {
+    zoom: 1.8;
+}
+tr th {
+    color: #fff !important;
+}

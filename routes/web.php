@@ -43,7 +43,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/step-two', [StepTwoController::class, 'create'])->name('step-two.create');
     Route::post('/step-two', [StepTwoController::class, 'store'])->name('step-two.store');
 
-    Route::post('/check', [CheckController::class, 'index'])->name('check.index');
+    Route::get('/check', [CheckController::class, 'index'])->name('check.index');
+    Route::post('/check', [CheckController::class, 'store'])->name('check.store');
 
     Route::get('/users', [UserController::class, 'index'])->name('users');
     Route::get('/user/create', [UserController::class, 'create'])->name('userCreate');
@@ -83,7 +84,7 @@ Route::get('seeder', function () {
 Route::get('/reset', function(Request $request) {
     $request->session()->forget('client_id');
     $request->session()->forget('project_id');
-    return redirect()->route('StepOne');
+    return redirect()->route('step-one.create');
 })->name('reset');
 
 Auth::routes();
