@@ -36,11 +36,11 @@ Route::middleware(['auth'])->group(function(){
 
     Route::get('/setup', [SetupController::class, 'index'])->name('setup.index');
 
-    Route::get('/step_one', [StepOneController::class, 'create'])->name('step-one.create'); // StepOne
-    Route::post('/step_one', [StepOneController::class, 'store'])->name('step-one.store'); // PostStepOne
+    Route::get('/step-one', [StepOneController::class, 'create'])->name('step-one.create');
+    Route::post('/step-one', [StepOneController::class, 'store'])->name('step-one.store');
 
-    Route::get('/step_two', [StepTwoController::class, 'create'])->name('step-two.create'); // StepTwo
-    Route::post('/step_two', [StepTwoController::class, 'store'])->name('step-two.store'); // PostStepTwo
+    Route::get('/step-two', [StepTwoController::class, 'create'])->name('step-two.create');
+    Route::post('/step-two', [StepTwoController::class, 'store'])->name('step-two.store');
 
     Route::get('/users', [UserController::class, 'index'])->name('users');
     Route::get('/user/create', [UserController::class, 'create'])->name('userCreate');
