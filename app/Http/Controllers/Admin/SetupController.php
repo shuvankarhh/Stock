@@ -91,8 +91,8 @@ class SetupController extends Controller
 
         $request->session()->put('project_id', $request->get('project_id'));
         
-        // goes to file upload
-        return redirect()->route('upload');
+        // goes to 
+        return redirect()->route('Setup');
     }
 
 }

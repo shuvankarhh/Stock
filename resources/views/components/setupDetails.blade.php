@@ -15,9 +15,9 @@
         @endif
     </li>
 
-    @if(!empty($viewData['fileUpload']))
+    @if(!empty($viewData['client']) && !empty($viewData['project']))
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('upload') }}">| Invoice Upload |</a>
+        <a class="nav-link" href="{{ route('Check') }}">| Check Stock</a>
     </li>
     @endif
 
