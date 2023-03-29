@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Setup - Step One') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" id="client_id_form" action="{{ route('PostStepOne') }}" x-data="submitClient()" @submit.prevent="submitForm">
+                    <form method="POST" id="client_id_form" action="{{ route('step-one.store') }}" x-data="submitClient()" @submit.prevent="submitForm">
                         @csrf
 
                         <div class="row mb-3">

@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Setup - Step Two') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" id="project_id_form" action="{{ route('PostStepTwo') }}" x-data="submitProject" @submit.prevent="submitForm" >
+                    <form method="POST" id="project_id_form" action="{{ route('step-two.store') }}" x-data="submitProject" @submit.prevent="submitForm" >
                         @csrf
 
                         <div class="row mb-3">

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\StepOneController;
+use App\Http\Controllers\Admin\StepTwoController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\InvoiceController;
@@ -32,13 +34,13 @@ Route::middleware(['auth','RestrictedUrl'])->group(function(){
 
 Route::middleware(['auth'])->group(function(){
 
-    Route::get('/setup', [SetupController::class, 'index'])->name('Setup');
+    Route::get('/setup', [SetupController::class, 'index'])->name('setup.index');
 
-    Route::get('/step_one', [SetupController::class, 'createStepOne'])->name('StepOne');
-    Route::post('/step_one', [SetupController::class, 'postCreateStepOne'])->name('PostStepOne');
+    Route::get('/step_one', [StepOneController::class, 'create'])->name('step-one.create'); // StepOne
+    Route::post('/step_one', [StepOneController::class, 'store'])->name('step-one.store'); // PostStepOne
 
-    Route::get('/step_two', [SetupController::class, 'createStepTwo'])->name('StepTwo');
-    Route::post('/step_two', [SetupController::class, 'postcreateStepTwo'])->name('PostStepTwo');
+    Route::get('/step_two', [StepTwoController::class, 'create'])->name('step-two.create'); // StepTwo
+    Route::post('/step_two', [StepTwoController::class, 'store'])->name('step-two.store'); // PostStepTwo
 
     Route::get('/users', [UserController::class, 'index'])->name('users');
     Route::get('/user/create', [UserController::class, 'create'])->name('userCreate');
@@ -46,7 +48,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('userEdit');
     Route::post('/user/edit/{id}', [UserController::class, 'update'])->name('userUpdate');
     Route::get('/user/delete/{id}', [UserController::class, 'delete'])->name('userDelete');
-    
+
 });
 
 Route::get('/', function () {
@@ -54,24 +56,24 @@ Route::get('/', function () {
 });
 
 Route::get('clear_cache', function () {
-    \Artisan::call('optimize:clear');
+    Artisan::call('optimize:clear');
     dd("clear cache");
 });
 
 Route::get('migrate', function () {
-    \Artisan::call('migrate');
+    Artisan::call('migrate');
     dd("run migrations");
 });
 
 Route::get('wipe', function () {
-    \Artisan::call('db:wipe');
-    \Artisan::call('migrate');
+    Artisan::call('db:wipe');
+    Artisan::call('migrate');
     dd("run migrations");
 });
 
 Route::get('seeder', function () {
-    \Artisan::call('db:seed', array('--class' => 'CreateAdminUserSeeder'));
-    \Artisan::call('db:seed', array('--class' => 'CreateDummyDataSeeder'));
+    Artisan::call('db:seed', array('--class' => 'CreateAdminUserSeeder'));
+    Artisan::call('db:seed', array('--class' => 'CreateDummyDataSeeder'));
     dd("run seeder");
 });
 
