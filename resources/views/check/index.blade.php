@@ -159,166 +159,162 @@ function uploadMe() {
 
 @section('content')
 <div class="container bg-white"  style="padding-top: 300px">
-  <!-- Row Start  -->
-  <div class="row" style="margin-left: 0px; margin-right: 0px;padding: 0px 100px;">
+    <!-- Row Start  -->
+    <div class="row" style="margin-left: 0px; margin-right: 0px;padding: 0px 100px;">
+        <div class="col-lg-9 col-md-9">
+            <!-- Row Start Check Build  -->
+            <div class="row" >
+                <h4>
+                    <div id='checkTitle' class="col-lg-9 col-md-9" style="border-bottom: 2px solid;">Check build:</div>
+                </h4>
+            </div>
+            <!-- Row End Check Build  -->
+            <br>
+            <!-- Row Start  Build A Check -->
+            <div class="row" >
+                <div class="col-lg-12 col-md-12" style="padding-left: 0px;padding-right: 0px;">
+                    <h5 class="build"><strong>Build A Check From A Batch</strong></h5>
+                </div>
+            </div>
+            <!-- Row End Build A Check  -->
+            <div style="height: 15px;border-left: 2px solid #b3b3b3;margin-left: 2%;"></div>
+            <!-- Row Start  Box 1 -->
+            <div class="row" style="border: 2px solid #b3b3b3;padding-bottom: 4%;">
 
-  <div class="col-lg-9 col-md-9">
+                <div class="col-lg-1 col-md-1">
+                    <h2 style="text-align: center;">1</h2>
+                </div>
 
-    <!-- Row Start Check Build  -->
-    <div class="row" >
-    <h4>
-      <div id='checkTitle' class="col-lg-9 col-md-9" style="border-bottom: 2px solid;">Check build:</div>
-    </h4>
-  </div>
-    <!-- Row End Check Build  -->
-  <br>
-    <!-- Row Start  Build A Check -->
-    <div class="row" >
-    <div class="col-lg-12 col-md-12" style="padding-left: 0px;padding-right: 0px;">
-      <h5 class="build"><strong>Build A Check From A Batch</strong></h5>
-      </div>
+                <div class="col-lg-9 col-md-9">
+                    <h3 style="text-align: left;margin-top: 5%;">Select Batch File from which to build checks:</h3>
+                    <h3 class="start_check_num">Starting check Number:</h3>
+                    <input type="text" value='' id="starting_num" class="check_num_field">
+                    <div id="msg1"></div>
+                </div>
+
+                <div class="col-lg-2 col-md-2" style="padding: 0;"><br><br>
+
+                    <input type="hidden" id='checkNumber' value="<?php echo file_get_contents(base_path('src/library/LastNumber.ck')); ?>" >
+                    <input type="file" id='data_file'   name="data_file" class="data_file" style="display: none;">
+                    <input type="button" id="upload" class="btn selct_btn" value='Select' onClick="uploadMe();" >
+                </div>
+
+            </div>
+
+            <!-- Row End Box 1   -->
+
+            <div style="height: 20px;border-left: 2px solid #b3b3b3;margin-left: 2%;"></div>
+            <!-- Row Start  Box 2 -->
+            <div class="row" style="border: 2px solid #b3b3b3;padding-bottom: 4%;">
+
+                <div class="col-lg-1 col-md-1">
+                    <h2 style="text-align: center;">2</h2>
+                </div>
+                <div class="col-lg-9 col-md-9">
+                    <h3 style="margin-top: 5%;">Proof the data:</h3>
+                    <h3 class="start_check_num">Mark as Manual Check:</h3>
+                    <input type="checkbox" id="ManualMark" name="ManualMark" class="check_num_check">
+                </div>
+                <div class="col-lg-2 col-md-2" style="padding: 0;"><br><br>
+                    <input type="button" id="review" class="btn review_btn" value='Review' onClick="review();" >
+
+                </div>
+
+            </div>
+
+            <!-- Row End Box 2   -->
+
+            <div style="height: 20px;border-left: 2px solid #b3b3b3;margin-left: 2%;"></div>
+            <!-- 2nd Row Start  Box 2  -->
+            <div class="row" style="border: 2px solid #b3b3b3;padding-bottom: 4%; margin-left: 2%;overflow-x:scroll">
+
+                <div class="col-lg-12 col-md-12">
+                    <h4 style="">Data file review</h4>
+                    <table id="dataTable" width="800%" border="0" cellpadding="0" cellspacing="0" >
+                        <thead>
+                        <tr id="tableHead" style="background-color: grey;color: #ffffff;">
+
+                        </tr>
+                        </thead>
+                        <tbody id="tableBody">
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+
+            <!-- 2nd Row End Box 2   -->
+
+            <div style="height: 20px;border-left: 2px solid #b3b3b3;margin-left: 2%;"></div>
+            <!-- Row Start  Box 3 -->
+            <div class="row" style="border: 2px solid #b3b3b3;padding-bottom: 4%;">
+
+                <div class="col-lg-1 col-md-1">
+                    <h2 style="text-align: center;">3</h2>
+                </div>
+                <div class="col-lg-9 col-md-9">
+                    <h3 style="margin-top: 5%;">Review a sample of the first and last check:</h3>
+                </div>
+
+            </div>
+
+            <!-- Row End Box 3   -->
+
+            <div style="height: 20px;border-left: 2px solid #b3b3b3;margin-left: 2%;"></div>
+            <!-- 2nd Row Start  Box 3  -->
+            <div class="row" style="border: 2px solid #b3b3b3;padding-bottom: 4%; margin-left: 2%;">
+
+                <div class="col-lg-12 col-md-12">
+                    <h4>First:</h4>
+                    <img id="first_img" src="" width="100%">
+                    <h4 style="">Last:</h4>
+                    <img id="last_img" src="" width="100%">
+                </div>
+
+            </div>
+
+            <!-- 2nd Row End Box 3   -->
+
+            <div style="height: 20px;border-left: 2px solid #b3b3b3;margin-left: 2%;"></div>
+            <!-- Row Start  Box 4 -->
+            <div class="row" style="border: 2px solid #b3b3b3;padding-bottom: 4%;">
+
+                <div class="col-lg-1 col-md-1" style="">
+                    <h2 style="text-align: center;">4</h2>
+                </div>
+                <div class="col-lg-9 col-md-9">
+                    <h3 style="margin-top: 5%;">Build the file:</h3>
+                </div>
+                <div class="col-lg-2 col-md-2" style="padding: 0;"><br><br>
+                    <input type="button" id='savepdf' class="btn review_btn" value='Save' onClick='savepdf();'>
+                </div>
+
+            </div>
+
+            <!-- Row End Box 5   -->
+
+            <div style="height: 20px;border-left: 2px solid #b3b3b3;margin-left: 2%;"></div>
+            <!-- Row Start  Box 4 -->
+            <div class="row" style="border: 2px solid #b3b3b3;padding-bottom: 4%;">
+
+                <div class="col-lg-1 col-md-1">
+                    <h2 style="text-align: center;">5</h2>
+                </div>
+                <div class="col-lg-9 col-md-9">
+                    <h3 style="margin-top: 5%;">Check batch Build is complete:</h3>
+                </div>
+                <div class="col-lg-2 col-md-2" style="padding: 0;"><br><br>
+                    <input type='button' class="btn finish_btn"  onClick='resetPage();' value='Finish'>
+                </div>
+
+            </div>
+            <br><br>
+            <!-- Row End Box 4   -->
+        </div>
+        <div class="col-lg-3 col-md-3"></div>
     </div>
-    <!-- Row End Build A Check  -->
-  <div style="height: 15px;border-left: 2px solid #b3b3b3;margin-left: 2%;"></div>
-    <!-- Row Start  Box 1 -->
-    <div class="row" style="border: 2px solid #b3b3b3;padding-bottom: 4%;">
-
-            <div class="col-lg-1 col-md-1">
-              <h2 style="text-align: center;">1</h2>
-            </div>
-
-            <div class="col-lg-9 col-md-9">
-              <h3 style="text-align: left;margin-top: 5%;">Select Batch File from which to build checks:</h3>
-              <h3 class="start_check_num">Starting check Number:</h3>
-            <input type="text" value='' id="starting_num" class="check_num_field">
-            <div id="msg1"></div>
-            </div>
-
-            <div class="col-lg-2 col-md-2" style="padding: 0;"><br><br>
-
-            <input type="hidden" id='checkNumber' value="<?php echo file_get_contents(base_path('src/library/LastNumber.ck')); ?>" >
-            <input type="file" id='data_file'   name="data_file" class="data_file" style="display: none;">
-            <input type="button" id="upload" class="btn selct_btn" value='Select' onClick="uploadMe();" >
-            </div>
-
-    </div>
-
-    <!-- Row End Box 1   -->
-
-    <div style="height: 20px;border-left: 2px solid #b3b3b3;margin-left: 2%;"></div>
-    <!-- Row Start  Box 2 -->
-    <div class="row" style="border: 2px solid #b3b3b3;padding-bottom: 4%;">
-
-            <div class="col-lg-1 col-md-1">
-              <h2 style="text-align: center;">2</h2>
-            </div>
-            <div class="col-lg-9 col-md-9">
-              <h3 style="margin-top: 5%;">Proof the data:</h3>
-              <h3 class="start_check_num">Mark as Manual Check:</h3>
-            <input type="checkbox" id="ManualMark" name="ManualMark" class="check_num_check">
-            </div>
-            <div class="col-lg-2 col-md-2" style="padding: 0;"><br><br>
-            <input type="button" id="review" class="btn review_btn" value='Review' onClick="review();" >
-
-            </div>
-
-    </div>
-
-    <!-- Row End Box 2   -->
-
-    <div style="height: 20px;border-left: 2px solid #b3b3b3;margin-left: 2%;"></div>
-    <!-- 2nd Row Start  Box 2  -->
-    <div class="row" style="border: 2px solid #b3b3b3;padding-bottom: 4%; margin-left: 2%;overflow-x:scroll">
-
-            <div class="col-lg-12 col-md-12">
-              <h4 style="">Data file review</h4>
-      <table id="dataTable" width="800%" border="0" cellpadding="0" cellspacing="0" >
-            <thead>
-                <tr id="tableHead" style="background-color: grey;color: #ffffff;">
-
-                </tr>
-                </thead>
-                <tbody id="tableBody">
-
-                </tbody>
-              </table>
-            </div>
-
-    </div>
-
-
-    <!-- 2nd Row End Box 2   -->
-
-    <div style="height: 20px;border-left: 2px solid #b3b3b3;margin-left: 2%;"></div>
-    <!-- Row Start  Box 3 -->
-    <div class="row" style="border: 2px solid #b3b3b3;padding-bottom: 4%;">
-
-            <div class="col-lg-1 col-md-1">
-              <h2 style="text-align: center;">3</h2>
-            </div>
-            <div class="col-lg-9 col-md-9">
-              <h3 style="margin-top: 5%;">Review a sample of the first and last check:</h3>
-            </div>
-
-    </div>
-
-    <!-- Row End Box 3   -->
-
-    <div style="height: 20px;border-left: 2px solid #b3b3b3;margin-left: 2%;"></div>
-    <!-- 2nd Row Start  Box 3  -->
-    <div class="row" style="border: 2px solid #b3b3b3;padding-bottom: 4%; margin-left: 2%;">
-
-            <div class="col-lg-12 col-md-12">
-              <h4>First:</h4>
-              <img id="first_img" src="" width="100%">
-              <h4 style="">Last:</h4>
-              <img id="last_img" src="" width="100%">
-            </div>
-
-    </div>
-
-    <!-- 2nd Row End Box 3   -->
-
-    <div style="height: 20px;border-left: 2px solid #b3b3b3;margin-left: 2%;"></div>
-    <!-- Row Start  Box 4 -->
-    <div class="row" style="border: 2px solid #b3b3b3;padding-bottom: 4%;">
-
-            <div class="col-lg-1 col-md-1" style="">
-              <h2 style="text-align: center;">4</h2>
-            </div>
-            <div class="col-lg-9 col-md-9">
-              <h3 style="margin-top: 5%;">Build the file:</h3>
-            </div>
-            <div class="col-lg-2 col-md-2" style="padding: 0;"><br><br>
-            <input type="button" id='savepdf' class="btn review_btn" value='Save' onClick='savepdf();'>
-            </div>
-
-    </div>
-
-    <!-- Row End Box 5   -->
-
-    <div style="height: 20px;border-left: 2px solid #b3b3b3;margin-left: 2%;"></div>
-    <!-- Row Start  Box 4 -->
-    <div class="row" style="border: 2px solid #b3b3b3;padding-bottom: 4%;">
-
-            <div class="col-lg-1 col-md-1">
-              <h2 style="text-align: center;">5</h2>
-            </div>
-            <div class="col-lg-9 col-md-9">
-              <h3 style="margin-top: 5%;">Check batch Build is complete:</h3>
-            </div>
-            <div class="col-lg-2 col-md-2" style="padding: 0;"><br><br>
-            <input type='button' class="btn finish_btn"  onClick='resetPage();' value='Finish'>
-            </div>
-
-    </div>
-  <br><br>
-    <!-- Row End Box 4   -->
-
-
-  </div>
-          <div class="col-lg-3 col-md-3"></div>
-  </div>
-  <!-- Row Main End  -->
+    <!-- Row Main End  -->
 </div>
 @endsection
