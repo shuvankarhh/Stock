@@ -158,7 +158,7 @@ function uploadMe() {
 @endpush
 
 @section('content')
-<div class="container bg-white"  style="padding-top: 300px">
+<div class="container bg-white"  style="padding-top: 100px">
     <!-- Row Start  -->
     <div class="row" style="margin-left: 0px; margin-right: 0px;padding: 0px 100px;">
         <div class="col-lg-9 col-md-9">
@@ -173,7 +173,7 @@ function uploadMe() {
             <!-- Row Start  Build A Check -->
             <div class="row" >
                 <div class="col-lg-12 col-md-12" style="padding-left: 0px;padding-right: 0px;">
-                    <h5 class="build"><strong>Build A Check From A Batch</strong></h5>
+                    <h3 class="build"><strong>Build Preprinted Check Stock</strong></h3>
                 </div>
             </div>
             <!-- Row End Build A Check  -->
@@ -248,6 +248,8 @@ function uploadMe() {
             <!-- 2nd Row End Box 2   -->
 
             <div style="height: 20px;border-left: 2px solid #b3b3b3;margin-left: 2%;"></div>
+
+{{-- 
             <!-- Row Start  Box 3 -->
             <div class="row" style="border: 2px solid #b3b3b3;padding-bottom: 4%;">
 
@@ -277,12 +279,14 @@ function uploadMe() {
 
             <!-- 2nd Row End Box 3   -->
 
-            <div style="height: 20px;border-left: 2px solid #b3b3b3;margin-left: 2%;"></div>
+            <div style="height: 20px;border-left: 2px solid #b3b3b3;margin-left: 2%;"></div> --}}
+
+
             <!-- Row Start  Box 4 -->
             <div class="row" style="border: 2px solid #b3b3b3;padding-bottom: 4%;">
 
                 <div class="col-lg-1 col-md-1" style="">
-                    <h2 style="text-align: center;">4</h2>
+                    <h2 style="text-align: center;">3</h2>
                 </div>
                 <div class="col-lg-9 col-md-9">
                     <h3 style="margin-top: 5%;">Build the file:</h3>
@@ -300,7 +304,7 @@ function uploadMe() {
             <div class="row" style="border: 2px solid #b3b3b3;padding-bottom: 4%;">
 
                 <div class="col-lg-1 col-md-1">
-                    <h2 style="text-align: center;">5</h2>
+                    <h2 style="text-align: center;">4</h2>
                 </div>
                 <div class="col-lg-9 col-md-9">
                     <h3 style="margin-top: 5%;">Check batch Build is complete:</h3>
