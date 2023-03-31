@@ -86,7 +86,7 @@ class CheckController extends Controller
                 $fieldArr[$key] = $val;
             }
 
-                       $json['totalChecks'] = count($csv);
+            $json['totalChecks'] = count($csv);
             $tamount = 0;
             $starting_check_number = $_POST['starting_num'];
             foreach ($csv as $values) {
@@ -123,8 +123,8 @@ class CheckController extends Controller
                     if ($key == 'AmountNumber' or $key == 'StubInvoiceAmount' or $key == 'StubAmount') {
                         if ($key == 'AmountNumber') {
                             $tamount = $tamount + (float) $val;
-                            list($digit, $decimal) = explode(".", $val);
-                            $val = "******$" . number_format($digit) . "." . $decimal . "**";
+                            //list($digit, $decimal) = explode(".", $val);
+                            //$val = "******$" . number_format($digit) . "." . $decimal . "**";
                         }
                         $xpos = $fieldArr[$key][0] - $pdf->GetStringWidth($val);
                     } else {
@@ -193,11 +193,11 @@ class CheckController extends Controller
                 $starting_check_number++;
             }
 
-            $starting_check_number--;
-            $json['last_check_number'] = $starting_check_number;
-            list($digit, $dec) = explode(".", $tamount);
+            // $starting_check_number--;
+            // $json['last_check_number'] = $starting_check_number;
+            // list($digit, $dec) = explode(".", $tamount);
 
-            $json['totalAmount'] = number_format($digit) . "." . $dec;
+            // $json['totalAmount'] = number_format($digit) . "." . $dec;
 
 
             if ($_POST['mode'] == 1) {
