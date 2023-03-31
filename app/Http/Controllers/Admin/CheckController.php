@@ -123,8 +123,8 @@ class CheckController extends Controller
                     if ($key == 'AmountNumber' or $key == 'StubInvoiceAmount' or $key == 'StubAmount') {
                         if ($key == 'AmountNumber') {
                             $tamount = $tamount + (float) $val;
-                            //list($digit, $decimal) = explode(".", $val);
-                            //$val = "******$" . number_format($digit) . "." . $decimal . "**";
+                            //list($digit, $decimal) = explode(".", $val); //[TT removed 2023-03-31 "to get null amount values to work"]
+                            //$val = "******$" . number_format($digit) . "." . $decimal . "**"; //[TT removed 2023-03-31 "to get null amount values to work"]
                         }
                         $xpos = $fieldArr[$key][0] - $pdf->GetStringWidth($val);
                     } else {
@@ -193,12 +193,13 @@ class CheckController extends Controller
                 $starting_check_number++;
             }
 
+            //[TT removed-BEGIN 2023-03-31 "to get null amount values to work"]
             // $starting_check_number--;
             // $json['last_check_number'] = $starting_check_number;
             // list($digit, $dec) = explode(".", $tamount);
 
             // $json['totalAmount'] = number_format($digit) . "." . $dec;
-
+            //[TT removed-END 2023-03-31 "to get null amount values to work"]
 
             if ($_POST['mode'] == 1) {
                 $pdfoutfile = UPLOAD_PATH . $input_file . "_" . time() . ".pdf";
