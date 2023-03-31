@@ -131,10 +131,12 @@ function review() {
   });
 
 };
+
 function isNumeric( obj ) {
   var realStringObj = obj && obj.toString();
   return !jQuery.isArray( obj ) && ( realStringObj - parseFloat( realStringObj ) + 1 ) >= 0;
 }
+
 function uploadMe() {
   if($('#starting_num').val()==''){
     //$('#starting_num').val(parseInt($('#checkNumber').val())+1);
