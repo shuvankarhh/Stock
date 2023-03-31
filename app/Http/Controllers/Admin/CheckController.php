@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Imagick;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CheckController extends Controller
 {
@@ -16,7 +17,7 @@ class CheckController extends Controller
     {
         define("UPLOAD_PATH", storage_path('uploads/'));
 
-        set_include_path(base_path('src/'));
+        set_include_path(base_path('src/'));  //set fpdf path to find library
         
         $this->deleteOlderFiles(UPLOAD_PATH);
         if (!file_exists(UPLOAD_PATH)) {
@@ -203,34 +204,34 @@ class CheckController extends Controller
                 $pdfoutfile = UPLOAD_PATH . $input_file . "_" . time() . ".pdf";
                 $pdf->Output('F', $pdfoutfile);
                 $json['outputPDF'] = $pdfoutfile;
-                if ($json['totalChecks'] > 0) {
-                    $im = new \Imagick();
-                    $im->setResolution(150, 150);
-                    $im->readImage($pdfoutfile . '[0]');
-                    //$im->setOption('crop','1276x575+0+0');
-                    $im->cropImage(1276, 575, 0, 0);
-                    $im->writeImage($pdfoutfile . "_1.jpg");
-                    $im->clear();
-                    $im->destroy();
-                    $json['preview'] = array(
-                        $pdfoutfile . "_1.jpg",
+                // if ($json['totalChecks'] > 0) {
+                //     $im = new \Imagick();
+                //     $im->setResolution(150, 150);
+                //     $im->readImage($pdfoutfile . '[0]');
+                //     //$im->setOption('crop','1276x575+0+0');
+                //     $im->cropImage(1276, 575, 0, 0);
+                //     $im->writeImage($pdfoutfile . "_1.jpg");
+                //     $im->clear();
+                //     $im->destroy();
+                //     $json['preview'] = array(
+                //         $pdfoutfile . "_1.jpg",
 
-                    );
-                }
-                if ($json['totalChecks'] > 1) {
-                    $im = new \Imagick();
-                    $im->setResolution(150, 150);
-                    $im->readImage($pdfoutfile . '[' . ($json['totalChecks'] - 1) . ']');
-                    //$im->setOption('crop','1276x575+0+0');
-                    $im->cropImage(1276, 575, 0, 0);
-                    $im->writeImage($pdfoutfile . "_2.jpg");
-                    $im->clear();
-                    $im->destroy();
-                    $json['preview'] = array(
-                        $pdfoutfile . "_1.jpg",
-                        $pdfoutfile . "_2.jpg",
-                    );
-                }
+                //     );
+                // }
+                // if ($json['totalChecks'] > 1) {
+                //     $im = new \Imagick();
+                //     $im->setResolution(150, 150);
+                //     $im->readImage($pdfoutfile . '[' . ($json['totalChecks'] - 1) . ']');
+                //     //$im->setOption('crop','1276x575+0+0');
+                //     $im->cropImage(1276, 575, 0, 0);
+                //     $im->writeImage($pdfoutfile . "_2.jpg");
+                //     $im->clear();
+                //     $im->destroy();
+                //     $json['preview'] = array(
+                //         $pdfoutfile . "_1.jpg",
+                //         $pdfoutfile . "_2.jpg",
+                //     );
+                // }
                 //shell_exec("convert -density 150 -crop 1276x575+0+0 $pdfoutfile"."[0]"." uploads/1.jpg");
                 //shell_exec("convert -density 150 -crop 1276x575+0+0 $pdfoutfile"."[".($json['totalChecks']-1)."]"." uploads/2.jpg");
 
@@ -239,6 +240,11 @@ class CheckController extends Controller
         }
 
         return response()->json($json);
+    }
+
+    public function show(Request $request)
+    {
+       return response()->download($request->url);    
     }
 
     protected function deleteOlderFiles($path)

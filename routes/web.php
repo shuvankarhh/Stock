@@ -45,6 +45,7 @@ Route::middleware(['auth'])->group(function(){
 
     Route::get('/check', [CheckController::class, 'index'])->name('check.index');
     Route::post('/check', [CheckController::class, 'store'])->name('check.store');
+    Route::get('/check/show', [CheckController::class, 'show'])->name('check.show');
 
     Route::get('/users', [UserController::class, 'index'])->name('users');
     Route::get('/user/create', [UserController::class, 'create'])->name('userCreate');

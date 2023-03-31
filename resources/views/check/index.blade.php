@@ -70,8 +70,8 @@ function resetPage() {
     window.location.reload(true);
 };
 function savepdf() {
-    // // hope the server sets Content-Disposition: attachment!
-    window.location = "download.php?last_check="+json.last_check_number+"&url="+encodeURIComponent(json.outputPDF);
+       // // hope the server sets Content-Disposition: attachment!
+    window.location = "/check/show?last_check="+json.last_check_number+"&url="+encodeURIComponent(json.outputPDF);
 };
 function getResponse(mode){
 	var file_data = $('#data_file').prop('files')[0];   
