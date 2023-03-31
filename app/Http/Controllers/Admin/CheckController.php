@@ -86,7 +86,7 @@ class CheckController extends Controller
                 $fieldArr[$key] = $val;
             }
 
-            $json['totalChecks'] = count($csv);
+                       $json['totalChecks'] = count($csv);
             $tamount = 0;
             $starting_check_number = $_POST['starting_num'];
             foreach ($csv as $values) {
