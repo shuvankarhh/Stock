@@ -21,16 +21,19 @@
 
         <link href="{{ env('cssOverWrite', '') }}" rel="stylesheet">
 
+        @stack('includes')
+
+        <script type="text/javascript">
+            @stack('javascript')
+        </script>
     </head>
 <body >
 
     <div x-data={loading:false}>
         <div class="loading" x-show="loading" x-on:loading.window="loading = !loading" >Loading...</div>
     </div>
-    
 
     <header>
-
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 navbar-light text-white bg-dark shadow-sm" id="mainNav">
             <div class="container-fluid px-4 px-lg-5">
                 <a class="navbar-brand" href="{{ route('setup.index') }}">
@@ -48,7 +51,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto text-white">
 
-                        
+
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -58,22 +61,22 @@
                             @endif
 
                         @else
-                           
+
                             <x-menuRight></x-menuRight>
                             <x-setupDetails></x-setupDetails>
-                            
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    
+
                                     @role('admin')
                                         <a class="dropdown-item" href="{{ route('users') }}">{{ __('User management') }}</a>
                                         <a class="dropdown-item" href="{{ route('userCreate') }}">{{ __('Create User') }}</a>
                                     @endrole
-                                    
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -87,14 +90,12 @@
                             </li>
                         @endguest
                     </ul>
-                    
+
                 </div>
             </div>
         </nav>
-
     </header>
     <div id="app">
-
         <main class="py-4 login_bg ">
             @yield('content')
         </main>
