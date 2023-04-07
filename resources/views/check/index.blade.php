@@ -251,7 +251,8 @@ function uploadMe() {
 
             <div style="height: 20px;border-left: 2px solid #b3b3b3;margin-left: 2%;"></div>
 
-{{-- 
+{{-- [TT Removed 2023-03-31 -"eliminate the image review step on the page and renumber the steps after step 3 (3
+Review a sample of the first and last check:) is eliminated"]
             <!-- Row Start  Box 3 -->
             <div class="row" style="border: 2px solid #b3b3b3;padding-bottom: 4%;">
 
