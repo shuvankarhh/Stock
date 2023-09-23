@@ -17,7 +17,9 @@ class StepOneController extends Controller
      */
     public function create(Request $request)
     {
-        $clients = Client::with('company')->get()->pluck('company.Company_Name', 'Client_ID')->prepend('Please select', '')->all();
+        $clients = Client::with('company')->whereHas('userClient', function($query){
+            $query->where('User_ID', auth()->id());
+        })->get()->pluck('company.Company_Name', 'Client_ID')->prepend('Please select', '')->all();
         return view('setup.step_one', compact('clients'));
     }
 
